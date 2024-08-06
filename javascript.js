@@ -1,20 +1,45 @@
 
 
+
 const makeGrid = (size) => {
+
+    size = size * size;
+
     for(let i = 0; i < size; i++){
-    nDiv = document.createElement('div')
+    nDiv = document.createElement('div');
     nDiv.className = 'gridCell-' + i;
-    nDiv.style.Color = "black";
+    nDiv.style.display = 'flex';
+    nDiv.style.flex = '1 1 25px'
+    nDiv.style.height = '25px'
+    nDiv.style.width = '25px'
+
+
     document.getElementById('container').appendChild(nDiv);
     //document.getElementsByClassName('gridCell-' + i);
     
     }
-    let temp = document.querySelectorAll("gridCell-1");
-// Apply CSS property to it
-for (let i = 0; i < temp.length; i++) {
-  temp[i].style.color = "white";
-  temp[i].style.backgroundColor = "black";
-}
+    
+
 }
 
-makeGrid(16);
+const getView = (size) =>{
+
+   let container =  document.getElementById('container');
+   let viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+   let viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+   let total_size = size * 25;
+   let width = total_size / 2;
+   
+   container.style.width = `${ total_size  }px`;
+   container.style.height = `${total_size}px`;
+
+}
+
+let Uinput = 16; 
+
+getView(Uinput);
+
+makeGrid(Uinput);
+
+window.addEventListener("resize", getView);
