@@ -1,1 +1,17 @@
 
+div{
+    
+    outline: 1px solid black !important;
+
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 100px 100px;
+   
+}
+
