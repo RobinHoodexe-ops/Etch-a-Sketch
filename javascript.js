@@ -26,6 +26,7 @@ const makeGrid = (size) => {
     for(let i = 0; i < size; i++){
     nDiv = document.createElement('div');
     nDiv.className = 'gridCell-' + i;
+    nDiv.id = 'cell';
     nDiv.style.display = 'flex';
     nDiv.style.flex = '1 1 25px'
     nDiv.style.height = '25px'
@@ -37,7 +38,22 @@ const makeGrid = (size) => {
     
     }
     
+    
+let cells = document.querySelectorAll('#container > div');
 
+
+cells.forEach(cell => {
+    cell.addEventListener('mouseover', function(e) {
+        selectCell(e.target);
+    });
+});
+
+
+    function selectCell(cell){
+        cell.style.backgroundColor = 'black';
+    }
+    
+    
     
 
 }
@@ -70,8 +86,12 @@ window.addEventListener("resize", getView(Uinput));
 
 document.getElementById('slider').addEventListener("input", (e) => {
     let newSize = e.target.value;
-    document.getElementById('value').textContent = newSize;
+    document.getElementById('value').textContent = newSize + "x" + newSize;
 
     getView(newSize);
     makeGrid(newSize);
+    
 })
+
+
+
